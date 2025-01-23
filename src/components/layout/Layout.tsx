@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 interface LayoutProps {
@@ -7,37 +7,29 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const location = useLocation();
-
   return (
     <div className="min-h-screen bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809')] bg-repeat">
       <header className="bg-black/80 text-white p-4">
         <nav className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold">
+          <Link to="/" className="text-2xl">
             <img src={logo} alt="Opus Major" className="h-8" />
           </Link>
-          <div className="space-x-4">
+          <div className="space-x-4 font-bold flex items-center group/nav">
             <Link
               to="/users"
-              className={`hover:text-yellow-400 transition-colors ${
-                location.pathname === "/users" ? "text-yellow-400" : ""
-              }`}
+              className="text-white transition-all duration-300 group-hover/nav:opacity-50 hover:!opacity-100"
             >
               Users
             </Link>
             <Link
               to="/users/new"
-              className={`hover:text-yellow-400 transition-colors ${
-                location.pathname === "/users/new" ? "text-yellow-400" : ""
-              }`}
+              className="text-white transition-all duration-300 group-hover/nav:opacity-50 hover:!opacity-100"
             >
               Add a user
             </Link>
             <Link
               to="/users/stats"
-              className={`hover:text-yellow-400 transition-colors ${
-                location.pathname === "/users/stats" ? "text-yellow-400" : ""
-              }`}
+              className="text-white transition-all duration-300 group-hover/nav:opacity-50 hover:!opacity-100"
             >
               Stats
             </Link>
