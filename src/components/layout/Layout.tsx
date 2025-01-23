@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../../assets/logo.svg";
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,7 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
       <header className="bg-black/80 text-white p-4">
         <nav className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold">
-            Opus Major
+            <img src={logo} alt="Opus Major" className="h-8" />
           </Link>
           <div className="space-x-4">
             <Link
