@@ -6,7 +6,7 @@ const fetchUsers = async (): Promise<User[]> => {
     "https://6752d87bf3754fcea7b9cea0.mockapi.io/users"
   );
   if (!response.ok) {
-    throw new Error("Erreur lors de la récupération des utilisateurs");
+    throw new Error("Error fetching users");
   }
   return response.json();
 };
@@ -32,14 +32,14 @@ const UserList = () => {
   if (error) {
     return (
       <div className="text-red-500 text-center p-4">
-        Une erreur est survenue lors du chargement des utilisateurs
+        An error occurred while loading the users
       </div>
     );
   }
 
   return (
     <>
-      <h1 className="text-3xl font-bold mb-6">Liste des Utilisateurs</h1>
+      <h1 className="text-3xl font-bold mb-6">Users list</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {users?.map((user) => (
           <div

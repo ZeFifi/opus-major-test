@@ -23,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
                 location.pathname === "/users" ? "text-yellow-400" : ""
               }`}
             >
-              Utilisateurs
+              Users
             </Link>
             <Link
               to="/users/new"
@@ -31,7 +31,7 @@ const Layout = ({ children }: LayoutProps) => {
                 location.pathname === "/users/new" ? "text-yellow-400" : ""
               }`}
             >
-              Nouveau
+              Add a user
             </Link>
             <Link
               to="/users/stats"
@@ -39,7 +39,7 @@ const Layout = ({ children }: LayoutProps) => {
                 location.pathname === "/users/stats" ? "text-yellow-400" : ""
               }`}
             >
-              Statistiques
+              Stats
             </Link>
           </div>
         </nav>
