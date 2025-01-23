@@ -3,6 +3,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 const createUser = async (name: string) => {
+  // Creating a unique identifier based on the name and timestamp to get a different avatar for each user
+  const uniqueId = `${name}-${Date.now()}`;
+
   const response = await fetch(
     "https://6752d87bf3754fcea7b9cea0.mockapi.io/users",
     {
@@ -12,15 +15,14 @@ const createUser = async (name: string) => {
       },
       body: JSON.stringify({
         name,
-        avatar: `https://gravatar.com/avatar/${Math.random()
-          .toString(36)
-          .substring(2)}?s=400&d=robohash&r=x`,
+        // Using Robohash directly with the unique identifier
+        avatar: `https://robohash.org/${uniqueId}?set=set3&size=200x200`,
       }),
     }
   );
 
   if (!response.ok) {
-    throw new Error("Erreur lors de la création de l'utilisateur");
+    throw new Error("Error creating user");
   }
 
   return response.json();
@@ -48,14 +50,14 @@ const UserForm = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold mb-6">Ajouter un Utilisateur</h1>
+      <h1 className="text-3xl font-bold mb-6">Add a User</h1>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
           <label
             htmlFor="name"
             className="block text-gray-700 font-medium mb-2"
           >
-            Nom
+            Name
           </label>
           <input
             type="text"
@@ -63,7 +65,7 @@ const UserForm = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            placeholder="Entrez le nom de l'utilisateur"
+            placeholder="Enter the name of the user"
             required
           />
         </div>
@@ -73,19 +75,19 @@ const UserForm = () => {
             onClick={() => navigate("/users")}
             className="btn btn-secondary"
           >
-            Annuler
+            Cancel
           </button>
           <button
             type="submit"
             className="btn btn-primary"
             disabled={mutation.isPending}
           >
-            {mutation.isPending ? "Création..." : "Créer"}
+            {mutation.isPending ? "Creating..." : "Create"}
           </button>
         </div>
         {mutation.isError && (
           <p className="mt-4 text-red-500 text-center">
-            Une erreur est survenue lors de la création de l'utilisateur
+            An error occurred while creating the user
           </p>
         )}
       </form>
