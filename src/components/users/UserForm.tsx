@@ -16,7 +16,8 @@ const createUser = async (name: string) => {
       body: JSON.stringify({
         name,
         // Using Robohash directly with the unique identifier
-        avatar: `https://robohash.org/${uniqueId}?set=set3&size=200x200`
+        avatar: `https://robohash.org/${uniqueId}?set=set3&size=200x200`,
+        customCreatedAt: new Date().toISOString()
       }),
     }
   );
