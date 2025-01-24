@@ -16,7 +16,7 @@ const createUser = async (name: string) => {
       body: JSON.stringify({
         name,
         // Using Robohash directly with the unique identifier
-        avatar: `https://robohash.org/${uniqueId}?set=set3&size=200x200`,
+        avatar: `https://robohash.org/${uniqueId}?set=set3&size=200x200`
       }),
     }
   );
@@ -50,12 +50,15 @@ const UserForm = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold mb-6">Add a User</h1>
+      <h1 className="font-bold text-xl text-[#EBBA1E] uppercase">Add a User</h1>
+      <h2 className="font-bold mb-6 text-2xl text-white uppercase">
+        Add a user to Opus Major
+      </h2>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
           <label
             htmlFor="name"
-            className="block text-gray-700 font-medium mb-2"
+            className="block text-white font-medium mb-2"
           >
             Name
           </label>
