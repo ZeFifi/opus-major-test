@@ -36,7 +36,7 @@ const CHART_CONFIG = {
 const fetchUsers = async (): Promise<User[]> => {
   const response = await fetch(FETCH_URL);
   if (!response.ok) {
-    throw new Error("Erreur lors de la récupération des utilisateurs");
+    throw new Error("Error fetching users");
   }
   return response.json();
 };
@@ -78,9 +78,9 @@ export const Stats = () => {
 
   if (error) {
     return (
-      <div className="text-red-500 text-center p-4">
-        Une erreur est survenue lors du chargement des statistiques
-      </div>
+      <p className="text-red-500 text-center p-4">
+        An error occurred while loading the stats
+      </p>
     );
   }
 

@@ -6,15 +6,3 @@ export interface User {
   createdAt: string;
   customCreatedAt?: string;
 }
-
-// Types for user stats
-export interface UserStats {
-  timestamp: number;
-  count: number;
-}
-
-// Types for API responses
-export interface ApiResponse<T> {
-  data: T;
-  error?: string;
-}
