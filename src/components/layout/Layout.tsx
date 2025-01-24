@@ -8,7 +8,7 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => (
-  <div className="min-h-screen bg-[url('https://images.unsplash.com/photo-1637825891028-564f672aa42c')] bg-repeat">
+  <div className="min-h-screen bg-[url('https://images.unsplash.com/photo-1637825891028-564f672aa42c')] bg-repeat bg-cover">
     <header className="bg-black/80 text-white p-4">
       <nav className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/">
