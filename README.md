@@ -37,3 +37,16 @@ React Query is a library for managing server state in React. I've never used it 
 ## Why React Router?
 
 React Router is a library for routing in React. It's easy to use and has a large community. I'm used to Next.js but I wanted something less complex for this test.
+
+# Issues I got
+
+The main issue I got is related to the API and the createdAt key when I wanted to display all users created from the last hour.
+
+I made some tests and found something really weird. I created a user :
+- at 14:37 and here's the value of createdAt: 2025-01-24T13:01:56.059Z
+- at 14:38 and here's the value of createdAt: 2025-01-23T14:54:58.042Z
+- at 14:39 and here's the value of createdAt: 2025-01-23T22:27:54.476Z
+
+As you can see, time should be separated by 1 min every time, but in fact we go from 13:01 to 14:54 to 22:27.
+
+That's why we can't rely on createdAt values on the chart. And since I can't edit the API, I didn't manage to display the users in the chart.
