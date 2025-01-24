@@ -39,7 +39,10 @@ const UserList = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold mb-6">Users list</h1>
+      <h1 className="font-bold text-xl text-[#EBBA1E] uppercase">Users</h1>
+      <h2 className="font-bold mb-6 text-2xl text-white uppercase">
+        List of all users on Opus Major
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {users?.map((user) => (
           <div
