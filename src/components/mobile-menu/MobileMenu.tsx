@@ -7,12 +7,12 @@ const MobileMenu = () => {
 
   return (
     <>
-      <div className="pointer-events-none fixed bottom-0 z-10 h-[200px] w-screen bg-gradient-to-b from-transparent to-black/50" />
+      <div className="pointer-events-none fixed bottom-0 z-10 h-[200px] w-screen bg-gradient-to-b from-transparent to-black/50 md:hidden" />
       
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-4 right-4 z-50 md:hidden p-2 rounded-full hover:scale-110 active:scale-95 transition-transform"
-        aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+        aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         {isOpen ? (
           <div className="w-20 h-20 relative flex items-center justify-center">
