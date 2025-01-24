@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { Howl } from "howler";
+import userAddedSoundFile from "../../assets/sounds/user-added.wav";
+
+// Sound effect when a user is added
+const userAddedSound = new Howl({
+  src: [userAddedSoundFile],
+  volume: 0.5
+});
 
 const createUser = async (name: string) => {
   // Creating a unique identifier based on the name and timestamp to get a different avatar for each user
@@ -34,9 +42,10 @@ const UserForm = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const mutation = useMutation({
+  const createUserRequest = useMutation({
     mutationFn: createUser,
     onSuccess: () => {
+      userAddedSound.play();
       queryClient.invalidateQueries({ queryKey: ["users"] });
       navigate("/users");
     },
@@ -45,7 +54,7 @@ const UserForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim()) {
-      mutation.mutate(name);
+      createUserRequest.mutate(name);
     }
   };
 
@@ -84,12 +93,12 @@ const UserForm = () => {
           <button
             type="submit"
             className="btn btn-primary"
-            disabled={mutation.isPending}
+            disabled={createUserRequest.isPending}
           >
-            {mutation.isPending ? "Creating..." : "Create"}
+            {createUserRequest.isPending ? "Creating..." : "Create"}
           </button>
         </div>
-        {mutation.isError && (
+        {createUserRequest.isError && (
           <p className="mt-4 text-red-500 text-center">
             An error occurred while creating the user
           </p>
