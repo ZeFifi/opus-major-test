@@ -1,8 +1,7 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
-import MobileMenu from "./MobileMenu";
-import Navigation from "../navigation/Navigation";
+import MobileMenu from "../mobile-menu/MobileMenu";
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,8 +14,25 @@ const Layout = ({ children }: LayoutProps) => (
         <Link to="/">
           <img src={logo} alt="Opus Major" className="h-8" />
         </Link>
-        <div className="hidden md:flex space-x-6">
-          <Navigation />
+        <div className="hidden md:flex space-x-4 font-bold flex items-center group/nav">
+        <Link
+          to="/users"
+          className="md:text-base text-white transition-all duration-300 group-hover/nav:opacity-50 hover:!opacity-100 text-2xl font-bold"
+        >
+          Users
+        </Link>
+        <Link
+          to="/users/new"
+          className="md:text-base text-white transition-all duration-300 group-hover/nav:opacity-50 hover:!opacity-100 text-2xl font-bold"
+        >
+          Add a user
+        </Link>
+        <Link
+          to="/stats"
+          className="md:text-base text-white transition-all duration-300 group-hover/nav:opacity-50 hover:!opacity-100 text-2xl font-bold"
+        >
+          Stats
+        </Link>
         </div>
       </nav>
     </header>
